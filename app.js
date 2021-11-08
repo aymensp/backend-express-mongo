@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var eventRouter = require("./routes/event.route");
-var studentRouter = require("./routes/students.route");
+var studentRouter = require("./routes/student.route");
 var app = express();
 
 // view engine setup
