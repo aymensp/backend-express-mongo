@@ -7,8 +7,10 @@ const mongoose = require("mongoose");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+var xmlRouter = require("./routes/villes");
 var eventRouter = require("./routes/event.route");
 var studentRouter = require("./routes/student.route");
+var productsRouter = require('./routes/product.route');
 var app = express();
 
 // view engine setup
@@ -26,6 +28,8 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/event", eventRouter);
 app.use("/student",studentRouter );
+app.use("/xml" , xmlRouter);
+app.use("/product" , productsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
