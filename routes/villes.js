@@ -42,27 +42,7 @@ router.get("/getData/:ville", (req, res) => {
         const regionsExist = arrayRegions.find((el) => {
           return el.id == ville;
         });
-        if (regionsExist) {
-          fs.readFile(
-            path.join(__dirname, `../resources/villes/${ville}.xml`),
-            (err, buffer) => {
-              if (!err) {
-                let arrayVille = [];
-                xml.parseString(buffer, (err, result) => {
-                  arrayVille = result.complete.option;
-                  arrayVille = arrayVille.map((el) => {
-                    return Ville.fromJson(el);
-                  });
-                });
-
-                regionsExist.villes = [];
-                regionsExist.villes = arrayVille;
-                // arrayVille.gouvernerat = regionsExist.gouvernerat;
-                res.json(regionsExist);
-              }
-            }
-          );
-        }
+      
       }
     }
   );

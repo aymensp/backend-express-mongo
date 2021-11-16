@@ -3,24 +3,24 @@ var router = express.Router();
 const Student = require("../models/student.model");
 const db = require("../config/db");
 
-// const query = require("util").promisify(db.query).bind(db);
-// router.post("/", async (req, res) => {
-//   const { firstName, lastName, email, password } = req.body;
-//   const student = new Student({
-//     firstName,
-//     lastName,
-//     email: email.toLowerCase().trim(),
-//     password,
-//   });
+const query = require("util").promisify(db.query).bind(db);
+router.post("/", async (req, res) => {
+  const { firstName, lastName, email, password } = req.body;
+  const student = new Student({
+    firstName,
+    lastName,
+    email: email.toLowerCase().trim(),
+    password,
+  });
 
-//   const isUnique = await Student.findOne({ email: email.toLowerCase().trim() });
-//   if (!isUnique) {
-//     await student.save();
-//     return res.json({ student });
-//   }
+  const isUnique = await Student.findOne({ email: email.toLowerCase().trim() });
+  if (!isUnique) {
+    await student.save();
+    return res.json({ student });
+  }
 
-//   res.json({ error: "email already registred" });
-// });
+  res.json({ error: "email already registred" });
+});
 
 // router.get("/", async (req, res) => {
 //   const students = await Student.find();
